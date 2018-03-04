@@ -1,5 +1,18 @@
+import tweepy
+
+from time import sleep
 from datetime import datetime
 from random import randint
+
+from credentials import *
+
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token, access_token_secret)
+api = tweepy.API(auth)
+
+# tweet = 'SYSTEM ONLINE'
+# api.update_status(status=tweet)
+
 
 now = datetime.now()
 
