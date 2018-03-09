@@ -2,7 +2,7 @@
 
 from random import shuffle, randint
 
-from nouns.animals import get_animals
+from nouns.animals import get_animal
 
 noun = [
     # A - E
@@ -27,8 +27,8 @@ adjectives = [
     'faceless', 'fanged', 'frost-bitten', 'gaunt', 'gloomy', 'glowing', 'grim', 'grotesque', 'haunted', 'headless',
     'hungry', 'infected',
     # K - O
-    'looming', 'luminescent', 'lurking', 'macabre', 'malevolent', 'many-faced', 'many-limbed', 'mouldy', 'mournful',
-    'ominous', 'patchwork', 'poisonous', 'otherworldly',
+    'looming', 'lurking', 'macabre', 'malevolent', 'many-faced', 'many-limbed', 'mouldy', 'mournful', 'ominous',
+    'patchwork', 'poisonous', 'otherworldly',
     # P - T
     'parasitic', 'radioactive', 'rotten', 'scaly', 'screaming', 'sinister', 'skeletal', 'slimy', 'spectral', 'spidery',
     'spiky', 'tentacled', 'twisted',
@@ -40,7 +40,7 @@ description = [
     'made of bones',
     'from a nightmare',
     'in disguise',
-    'with the head of a {}'.format(get_animals(all=True))
+    'with the head of a {}'.format(get_animal('all'))
 ]
 
 nope_combo = {
@@ -53,7 +53,8 @@ nope_combo = {
     'black dog': 'with the head of a dog',
     'hellhound': 'with the head of a dog',
     'slenderman': ('many-limbed', 'faceless'),
-    'faceless man': 'faceless'
+    'faceless man': 'faceless',
+    'costume': 'frost-bitten'
 }
 
 
