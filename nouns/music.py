@@ -28,11 +28,11 @@ instruments = [
 
 def get_instrument(num=1):
     """
-    Returns a list of musical instruments
+    Returns a list of musical instruments.
     :param num: int
-        Number of instruments to return
+        Number of instruments to return.
     :return instruments: List
-        A list of musical instruments
+        A list of musical instruments.
     """
 
     shuffle(instruments)
