@@ -18,7 +18,7 @@ sizes = {
 
 def get_size(size):
     """
-
+    Generate a synonym for a given size.
     :param size: string
         Size required: small, medium or large.
     :return: string
