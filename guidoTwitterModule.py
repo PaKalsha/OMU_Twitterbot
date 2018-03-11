@@ -56,7 +56,7 @@ illustration = [
 ####
 
 object_adjectives = [
-    'delicate', 'knotted', 'polished', 'reflective', 'rusted', 'shattered', 'tangled'
+    'delicate', 'knotted', 'polished', 'reflective', 'rusted', 'shattered', 'tangled', 'embroidered', 'folded'
 ]
 
 materials = [
@@ -74,7 +74,8 @@ def weekday():
                 prompt_dict.append(line.strip())
 
         index_limit = len(prompt_dict) - 1
-        return 'draw {}'.format(prompt_dict[randint(0, index_limit)])
+
+        return prompt_dict[randint(0, index_limit)]
 
 
 def post_tweet():
@@ -82,7 +83,7 @@ def post_tweet():
     Construct and post tweet based on month and day.
     """
     now = datetime.now()
-    day = 6  # now.weekday()
+    day = 2  # now.weekday()
     month = now.month
 
     hashtags = '#drawingprompt'
