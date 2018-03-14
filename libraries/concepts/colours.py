@@ -46,7 +46,7 @@ def get_shade():
     return libraries.get_one(shades)
 
 
-def get_color(hue, shade=False):
+def get_color(hue=None, shade=False):
     """
     Generates a random colour.
     :param hue: string
@@ -56,20 +56,42 @@ def get_color(hue, shade=False):
     :return: string
         A randomised colour.
     """
-    color = libraries.get_one(colors[hue.lower()])
+    if hue is None:
+        color_range = colors.keys()
+        color_range.remove('fictional')
+        color = libraries.get_one(color_range)
+
+    else:
+        color = libraries.get_one(colors[hue.lower()])
 
     if shade is True:
         color = '{} {}'.format(get_shade(), color)
     return color
 
 
-def get_palette(hues, palette=None):
+def get_colors(num=3):
+    """
+    Return a number of basic colors.
+    :param num: int
+        Number of colors to return.
+    :return: list
+        List of colours.
+    """
+    palette = set()
+    while len(palette) < num:
+        palette.add(get_color())
+    return list(palette)
+
+
+def get_palette(hues, palette=None, shade=True):
     """
     Creates a palette of colours.
     :param hues: list
         List of colours to include in the palette.
     :param palette: list
         Colours already included in palette.
+    :param shade: bool
+        Whether or not to tint the colour.
     :return: list
         Returns list of colours.
     """
@@ -79,7 +101,7 @@ def get_palette(hues, palette=None):
         palette = []
 
     for color in hues:
-        new_color = get_color(color, shade=True)
+        new_color = get_color(color, shade=shade)
         if new_color not in palette:
             palette.append(new_color)
         else:
@@ -88,6 +110,7 @@ def get_palette(hues, palette=None):
 
 
 if __name__ == '__main__':
-    print get_shade()
+    print get_color()
+    print get_colors()
     print get_color('red', shade=True)
     print get_palette(hues=['grey']*3, palette=['neon slade grey'])
