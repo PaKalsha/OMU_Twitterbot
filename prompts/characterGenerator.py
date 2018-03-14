@@ -100,7 +100,7 @@ class CharacterGenerator(object):
         :param character: string
             Specify a character type
         :return: string
-            Returns a character with a description.
+            Returns a character design prompt.
         """#
         if character is None:
             character = self.get_character()
