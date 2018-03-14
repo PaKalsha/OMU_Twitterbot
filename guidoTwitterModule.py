@@ -1,6 +1,5 @@
 import tweepy
 
-from time import sleep
 from datetime import datetime
 from random import randint
 
@@ -29,28 +28,6 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
-
-####
-# Illustration prompts
-####
-
-illustration = [
-    'ninja battle',
-    '"whatever you do, keep your eyes on me"',
-    'haunted painting studio',
-    'abandoned opera house',
-    'kaiju attack',
-    'campfire tales',
-    'saving a sleepwalker from themself',
-    'an astonishing slice of cake',
-    'a fairytale gatecrashing a birthday party',
-    'zombie apocalypse ... on ice!',
-    'something wicked this way comes',
-    'improve a story you like',
-    'fix a story that you don\'t like',
-    'your character receives a basket of baby {}s'.format(get_animal('mythical'))
-]
-
 ####
 # Modifiers
 ####
@@ -64,26 +41,12 @@ materials = [
 ]
 
 
-def weekday():
-    with open('prompts\weekday.txt', 'r') as f:
-        prompt_dict = []
-        for line in f:
-            if line.startswith('#') or line.startswith('\n'):
-                pass
-            else:
-                prompt_dict.append(line.strip())
-
-        index_limit = len(prompt_dict) - 1
-
-        return prompt_dict[randint(0, index_limit)]
-
-
-def post_tweet():
+def generate_tweet():
     """
     Construct and post tweet based on month and day.
     """
     now = datetime.now()
-    day = 2  # now.weekday()
+    day = now.weekday()
     month = now.month
 
     hashtags = '#drawingprompt'
@@ -91,39 +54,48 @@ def post_tweet():
     # special months
     # # May is Mermay
     if month == 5:
-        from prompts.mermay import get_prompt
-        prompt = get_prompt()
+        from prompts.mermay import Mermay
+        module = Mermay()
+        prompt = module.get_prompt()
         hashtags += ' #mermay'
 
     # # October is Spooktober
     elif month == 10:
-        from prompts.spooktober import get_prompt
-        prompt = get_prompt()
+        from prompts.spooktober import Spooktober
+        module = Spooktober()
+        prompt = module.get_prompt()
         hashtags += ' #spooktober'
 
     # Saturdays are illustration days
     elif day == 5:
-        prompt = illustration[randint(0, (len(illustration)-1))]
+        from prompts.illustration import get_prompt
+        prompt = get_prompt()
         hashtags += ' #illustration'
 
     # Sundays are character design
     elif day == 6:
-        from prompts.characterGenerator import get_prompt
-        prompt = get_prompt()
+        from prompts.characterGenerator import CharacterGenerator
+        module = CharacterGenerator()
+        prompt = module.get_prompt()
         hashtags += ' #characterdesign'
     else:
-        prompt = weekday()
+        from prompts.sketchbook import get_prompt
+        prompt = get_prompt()
 
     tweet = '++ DAILY DRAWING PROMPT {:%Y%m%d}: {} ++\n{}'.format(now, prompt.upper(), hashtags)
+    return tweet
 
+
+def post_tweet(tweet):
     try:
 
-        print tweet
-        # api.update_status(status=tweet)
+        api.update_status(status=tweet)
 
     except tweepy.TweepError as e:
         print (e.reason)
 
 
 if __name__ == '__main__':
-    post_tweet()
+    tweet = generate_tweet()
+    print tweet
+    post_tweet(tweet)
