@@ -1,4 +1,4 @@
-from random import shuffle
+import libraries
 
 instruments = [
     # A - E
@@ -26,7 +26,7 @@ instruments = [
 ]
 
 
-def get_instrument(num=1):
+def get_instrument():
     """
     Returns a list of musical instruments.
     :param num: int
@@ -34,13 +34,21 @@ def get_instrument(num=1):
     :return instruments: List
         A list of musical instruments.
     """
+    return libraries.get_one(instruments)
 
-    shuffle(instruments)
-    try:
-        return instruments[0:num]
-    except TypeError:
-        return instruments[0]
+
+def get_ensemble(num=3):
+    """
+    Returns multiple musical instruments.
+    :param num: int
+        The number of instruments to return.
+    :return: set
+        A set of musical instruments.
+    """
+    ensemble = set()
+    while len(ensemble) < num:
+        ensemble.add(get_instrument())
 
 
 if __name__ == '__main__':
-    print get_instrument(num=3)
+    print get_instrument()

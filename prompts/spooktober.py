@@ -1,11 +1,9 @@
 # Halloween drawing prompt generator
 
-from random import randint
-
 
 from prompts.characterGenerator import CharacterGenerator
 
-from nouns.animals import get_animal
+from libraries.nouns.animals import get_animal
 
 
 class Spooktober(CharacterGenerator):
@@ -15,7 +13,8 @@ class Spooktober(CharacterGenerator):
             'black cat', 'black dog', 'black-eyed children', 'bloody butcher', 'boogeyman', 'brain in a jar', 'clown',
             'costume', 'creature', 'demon', 'devil', 'doll', 'doppelganger',
             # F - J
-            'faceless man', 'familiar', 'ghost', 'ghoul', 'goatman', 'goblin', 'hellhound', 'homunculus', 'horseman',
+            'faceless man', 'faceless woman','familiar', 'ghost', 'ghoul', 'goatman', 'goblin', 'hellhound',
+            'homunculus', 'horseman',
             # K - O
             'kaiju', 'lake monster', 'mad scientist', 'mummy', 'mothman', 'owl',
             # P - T
@@ -27,8 +26,8 @@ class Spooktober(CharacterGenerator):
 
         self.adjectives = [
             # A - E
-            'alien', 'angry', 'bizarre', 'bloody', 'body-snatching', 'burning', 'clockwork', 'cobwebbed', 'creeping',
-            'creepy', 'cursed', 'eerie', 'envious', 'evil',
+            'alien', 'angry', 'bizarre', 'bloody', 'body-snatching', 'burning', 'clockwork', 'cobwebbed', 'corrupted',
+            'creeping', 'creepy', 'cursed', 'eerie', 'envious', 'evil',
             # F - J
             'faceless', 'fanged', 'frost-bitten', 'gaunt', 'gloomy', 'glowing', 'grim', 'grotesque', 'haunted',
             'headless', 'hungry', 'infected',

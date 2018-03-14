@@ -1,4 +1,4 @@
-from random import shuffle, randint
+import libraries
 
 animals = {
     'mammal': (
@@ -92,15 +92,12 @@ def get_animal(animal_type):
     except KeyError:
         family = [get_menagerie('all', num=1)]
 
-    index_limit = len(family) - 1
-    creature = family[randint(0, index_limit)]
-
-    return creature
+    return libraries.get_one(family)
 
 
 def get_menagerie(animal_type, num=3):
     """
-    Returns a list of animals of the required type.
+    Returns a list of animals of the given type.
     :param animal_type: List or string
         Which animals to include in the selection.
     :param num: int
@@ -108,7 +105,7 @@ def get_menagerie(animal_type, num=3):
     :return animal_list: List
         A list of animals of the required type.
     """
-    animal_list = []
+    animal_list = ()
 
     if animal_type is 'all':
         animal_type = [
@@ -129,18 +126,17 @@ def get_menagerie(animal_type, num=3):
     except KeyError:
         return get_menagerie('all', num=num)
 
-    shuffle(animal_list)
+    menagerie = set()
+
+    while len(menagerie) < num:
+        menagerie.add(libraries.get_one(animal_list))
+
     if num == 1:
-        return animal_list[0]
-
-    try:
-
-        return animal_list[0:num]
-
-    except TypeError:
-        return animal_list[0]
+        return list(menagerie)[0]
+    else:
+        return list(menagerie)
 
 
 if __name__ == '__main__':
     print get_animal('mythical2')
-    print get_menagerie('all2', num=3)
+    print get_menagerie('all', num=3)

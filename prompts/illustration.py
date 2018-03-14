@@ -1,13 +1,15 @@
 
-from random import randint
+import libraries
 
-from nouns.animals import get_animal
+from libraries.nouns.animals import get_animal
+from libraries.nouns.places import get_place
+
 
 illustration = [
     'ninja battle',
     '"whatever you do, keep your eyes on me"',
-    'haunted painting studio',
-    'abandoned opera house',
+    'haunted {}'.format(get_place()),
+    'abandoned {}'.format(get_place()),
     'kaiju attack',
     'campfire tales',
     'saving a sleepwalker from themself',
@@ -23,8 +25,8 @@ illustration = [
 
 def get_prompt():
     """
-
-    :return:
+    Get a random prompt from the illustration list.
+    :return: string
+        An illustration prompt.
     """
-    prompt = illustration[randint(0, (len(illustration) - 1))]
-    return prompt
+    return libraries.get_one(illustration)

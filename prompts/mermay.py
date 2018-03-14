@@ -1,7 +1,7 @@
 
 from prompts.characterGenerator import CharacterGenerator
 
-from nouns.animals import get_animal
+from libraries.nouns.animals import get_animal
 
 
 class Mermay(CharacterGenerator):

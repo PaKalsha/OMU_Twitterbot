@@ -1,8 +1,9 @@
+import libraries
+
+from libraries.nouns.animals import get_animal
+from libraries.concepts.emotions import get_emotion
+
 from random import randint
-
-from concepts.emotions import get_emotion
-
-from nouns.animals import get_animal
 
 
 class CharacterGenerator(object):
@@ -47,21 +48,18 @@ class CharacterGenerator(object):
             'waif', 'waiter', 'waitress', 'warrior', 'weaver', 'white mage', 'witch', 'wizard'
         )
 
-        self.adjectives = (
-            # Emotions
-            'lovestruck', 'giddy', 'sleepy', 'angry', 'playful', 'curious', 'silly', 'laughing', 'joyful', 'happy',
-            'hopeful', 'confident', 'powerful', 'peaceful', 'surprised', 'eager', 'excited', 'glorious', 'fascinated',
-            'compassionate', 'cheerful', 'glamorous', 'determined', 'enthusiastic', 'satisfied', 'courageous',
-            'relaxed', 'tired', 'concerned', 'apprehensive', 'flustered', 'rude', 'confused', 'exasperated', 'sad',
-            'lonely', 'suspicious', 'grief-stricken', 'morose', 'serious', 'glum', 'aggressive', 'wary', 'nervous',
-            'upset', 'envious', 'hungry', 'protective', 'confused', 'smug', 'penitent', 'romantic',
-
-            # Descriptors
+        self.adjectives = [
             'masked', 'magical', 'cute', 'ancient', 'regal', 'mystical', '{}-like'.format(get_animal('mammal')),
-            'interstellar', 'evil', 'corrupt'
-        )
+            'interstellar', 'evil', 'corrupt', 'corrupted', 'glamorous', 'concerned', 'flustered', 'rude', 'serious',
+            'protective', 'guilty', 'humiliated', 'reproachful', 'humble', 'overwhelmed', 'content', 'comfortable',
+            'victorious', 'calm', 'confident', 'courageous', 'determined', 'powerful', 'peaceful', 'smug', 'triumphant',
+            'relaxed', 'glorious', 'laughing', 'hopeful', 'robot'
+        ]
 
-        self.description = [', who is out of their depth', ', who got more than they bargained for']
+        self.description = ['who is out of their depth',
+                            'who got more than they bargained for',
+                            'from beyond the stars',
+                            'from the future']
 
         self.nope_combo ={
             'romantic': 'romantic'
@@ -73,8 +71,7 @@ class CharacterGenerator(object):
         :return: string
             Returns a single character type.
         """
-        index_limit = len(self.char_type) - 1
-        return self.char_type[randint(0, index_limit)]
+        return libraries.get_one(self.char_type)
 
     def get_adjective(self):
         """
@@ -82,8 +79,8 @@ class CharacterGenerator(object):
         :return: string
             Returns a single adjective.
         """
-        index_limit = len(self.adjectives) - 1
-        return self.adjectives[randint(0, index_limit)]
+        adjective = self.adjectives + [get_emotion()]*len(self.adjectives)
+        return libraries.get_one(adjective)
 
     def get_description(self):
         """
@@ -91,8 +88,7 @@ class CharacterGenerator(object):
         :return: string
             Returns a single description.
         """
-        index_limit = len(self.description) - 1
-        return self.description[randint(0, index_limit)]
+        return libraries.get_one(self.description)
 
     def get_prompt(self, character=None):
         """
@@ -118,16 +114,6 @@ class CharacterGenerator(object):
                 prompt = self.get_prompt()
 
         return prompt
-
-
-        # # emotion = get_emotion('all')
-        # if character is None:
-        #     character = self.get_character()
-        #
-        # index_limit = len(self.adjectives) - 1
-        # desc = self.adjectives[randint(0, index_limit)]
-        #
-        # return '{} {}'.format(desc, character)
 
 
 if __name__ == '__main__':

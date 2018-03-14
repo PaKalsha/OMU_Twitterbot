@@ -1,12 +1,8 @@
 import tweepy
 
 from datetime import datetime
-from random import randint
 
 from credentials import *
-
-from nouns.animals import get_animal
-
 
 ####
 # todo: Valentine's theme

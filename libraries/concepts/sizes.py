@@ -1,4 +1,4 @@
-from random import randint
+import libraries
 
 sizes = {
     'large': ('colossal', 'elephantine', 'enlarged', 'enormous', 'epic', 'full-sized', 'gargantuan', 'giant', 'grand',
@@ -16,19 +16,16 @@ sizes = {
 }
 
 
-def get_size(size):
+def get_size(size_type):
     """
     Generate a synonym for a given size.
-    :param size: string
+    :param size_type: string
         Size required: small, medium or large.
     :return: string
         A  random synonym for the size given.
     """
-    try:
-        index_limit = len(sizes[size.lower()]) - 1
-        return sizes[size][randint(0, index_limit)]
-    except KeyError:
-        raise
+    size = libraries.get_one(sizes[size_type.lower()])
+    return size
 
 
 if __name__ == '__main__':

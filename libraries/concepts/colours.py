@@ -1,8 +1,8 @@
-from random import randint
+import libraries
 
 shades = ('dark', 'light', 'deep', 'pale', 'pastel', 'neon')
 
-colours = {
+colors = {
     'pink': ('pink', 'hot pink', 'coral', 'violet-red', 'salmon'),
 
     'red': ('red', 'Indian red', 'crimson', 'firebrick red', 'coral', 'tomato red', 'salmon'),
@@ -43,11 +43,10 @@ def get_shade():
     :return: string
         Random shade modifier.
     """
-    index_limit = len(shades) - 1
-    return shades[randint(0, index_limit)]
+    return libraries.get_one(shades)
 
 
-def get_colour(hue, shade=False):
+def get_color(hue, shade=False):
     """
     Generates a random colour.
     :param hue: string
@@ -57,13 +56,11 @@ def get_colour(hue, shade=False):
     :return: string
         A randomised colour.
     """
-    colour_range = colours[hue.lower()]
-    index_limit = len(colour_range) - 1
+    color = libraries.get_one(colors[hue.lower()])
 
-    colour = colour_range[randint(0, index_limit)]
     if shade is True:
-        colour = '{} {}'.format(get_shade(), colour)
-    return colour
+        color = '{} {}'.format(get_shade(), color)
+    return color
 
 
 def get_palette(hues, palette=None):
@@ -81,15 +78,16 @@ def get_palette(hues, palette=None):
     else:
         palette = []
 
-    for colour in hues:
-        new_colour = get_colour(colour, shade=True)
-        if new_colour not in palette:
-            palette.append(new_colour)
+    for color in hues:
+        new_color = get_color(color, shade=True)
+        if new_color not in palette:
+            palette.append(new_color)
         else:
-            get_palette([colour], palette)
+            get_palette([color], palette)
     return palette
 
 
 if __name__ == '__main__':
-    print get_colour(hue='red')
+    print get_shade()
+    print get_color('red', shade=True)
     print get_palette(hues=['grey']*3, palette=['neon slade grey'])

@@ -5,8 +5,9 @@ from random import randint
 
 def get_prompt():
     """
-
-    :return:
+    Get a sketchbook prompt from weekday.txt
+    :return: string
+        A random sketchbook prompt
     """
     fn = os.path.join(os.path.dirname(__file__), 'weekday.txt')
     with open(fn, 'r') as f:
