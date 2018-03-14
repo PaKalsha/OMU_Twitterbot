@@ -54,29 +54,83 @@ class CharacterGenerator(object):
             'compassionate', 'cheerful', 'glamorous', 'determined', 'enthusiastic', 'satisfied', 'courageous',
             'relaxed', 'tired', 'concerned', 'apprehensive', 'flustered', 'rude', 'confused', 'exasperated', 'sad',
             'lonely', 'suspicious', 'grief-stricken', 'morose', 'serious', 'glum', 'aggressive', 'wary', 'nervous',
-            'upset', 'envious', 'hungry', 'protective', 'confused', 'smug', 'penitent',
+            'upset', 'envious', 'hungry', 'protective', 'confused', 'smug', 'penitent', 'romantic',
 
             # Descriptors
             'masked', 'magical', 'cute', 'ancient', 'regal', 'mystical', '{}-like'.format(get_animal('mammal')),
             'interstellar', 'evil', 'corrupt'
         )
 
+        self.description = [', who is out of their depth', ', who got more than they bargained for']
+
+        self.nope_combo ={
+            'romantic': 'romantic'
+        }
+
     def get_character(self):
+        """
+        Get a character type from self.char_type.
+        :return: string
+            Returns a single character type.
+        """
         index_limit = len(self.char_type) - 1
         return self.char_type[randint(0, index_limit)]
 
+    def get_adjective(self):
+        """
+        Get a adjective from self.adjectives.
+        :return: string
+            Returns a single adjective.
+        """
+        index_limit = len(self.adjectives) - 1
+        return self.adjectives[randint(0, index_limit)]
+
+    def get_description(self):
+        """
+        Get a description from self.description.
+        :return: string
+            Returns a single description.
+        """
+        index_limit = len(self.description) - 1
+        return self.description[randint(0, index_limit)]
+
     def get_prompt(self, character=None):
-        # emotion = get_emotion('all')
+        """
+        Combines a random character and an emotion or adjective.
+        :param character: string
+            Specify a character type
+        :return: string
+            Returns a character with a description.
+        """#
         if character is None:
             character = self.get_character()
 
-        index_limit = len(self.adjectives) - 1
-        desc = self.adjectives[randint(0, index_limit)]
+        num_descriptions = len(self.adjectives) + len(self.description)
+        die = randint(1, num_descriptions)
 
-        return '{} {}'.format(desc, character)
+        if (die - 1) <= len(self.adjectives):
+            prompt = '{} {}'.format(self.get_adjective(), character)
+            if character in self.nope_combo.keys() and self.adjectives[die] in self.nope_combo[character]:
+                prompt = self.get_prompt()
+        else:
+            prompt = '{} {}'.format(character, self.get_description())
+            if character in self.nope_combo.keys() and self.description[0] in self.nope_combo[character]:
+                prompt = self.get_prompt()
+
+        return prompt
+
+
+        # # emotion = get_emotion('all')
+        # if character is None:
+        #     character = self.get_character()
+        #
+        # index_limit = len(self.adjectives) - 1
+        # desc = self.adjectives[randint(0, index_limit)]
+        #
+        # return '{} {}'.format(desc, character)
 
 
 if __name__ == '__main__':
     c = CharacterGenerator()
     print c.get_prompt()
-    print c.get_prompt('{} mermaid'.format(get_animal('fish')))
+    print c.get_prompt(get_animal('mammal'))
