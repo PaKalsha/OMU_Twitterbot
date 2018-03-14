@@ -1,5 +1,6 @@
 # Halloween drawing prompt generator
 
+import libraries
 
 from prompts.characterGenerator import CharacterGenerator
 
@@ -61,6 +62,15 @@ class Spooktober(CharacterGenerator):
             'faceless man': 'faceless',
             'costume': 'frost-bitten'
         }
+
+    def get_adjective(self):
+        """
+        Get a adjective from self.adjectives.
+        :return: string
+            Returns a single adjective.
+        """
+        adjective = self.adjectives
+        return libraries.get_one(adjective)
 
 
 if __name__ == '__main__':

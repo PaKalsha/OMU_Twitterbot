@@ -14,7 +14,6 @@ from credentials import *
 # todo: specific_opinion
 # todo: shape
 # todo: age
-# todo: index_limit / random selector util
 ####
 
 ####
