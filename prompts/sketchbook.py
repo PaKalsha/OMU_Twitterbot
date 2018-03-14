@@ -1,6 +1,11 @@
 import os
+import libraries
 
-from random import randint
+from libraries.concepts.colours import get_colors
+
+sketchbook_prompts = [
+    'still life in {0} and {1}'.format(*get_colors(2))
+]
 
 
 def get_prompt():
@@ -11,13 +16,14 @@ def get_prompt():
     """
     fn = os.path.join(os.path.dirname(__file__), 'weekday.txt')
     with open(fn, 'r') as f:
-        prompt_dict = []
         for line in f:
             if line.startswith('#') or line.startswith('\n'):
                 pass
             else:
-                prompt_dict.append(line.strip())
+                sketchbook_prompts.append(line.strip())
 
-        index_limit = len(prompt_dict) - 1
+        return libraries.get_one(sketchbook_prompts)
 
-        return prompt_dict[randint(0, index_limit)]
+
+if __name__ == '__main__':
+    print get_prompt()

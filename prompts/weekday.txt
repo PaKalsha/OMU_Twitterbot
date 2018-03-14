@@ -36,6 +36,8 @@ draw a portrait of a man you admire
 draw a portrait of a woman you admire
 draw a side-view of a head
 draw a celebrity doing something they're famous for
+draw a portrait of your favourite book character
+draw a portrait of your favourite film character
 
 # animals
 draw an animal eating another animal
@@ -129,6 +131,7 @@ draw something in nature
 draw a musical instrument
 draw a ship or boat
 draw a bottle of water
+draw an apple on a tablecloth
 
 # technical development
 draw the contents of your junk drawer
@@ -151,6 +154,7 @@ draw using materials with which you are not familiar
 draw a piece of patterned fabric with folds
 draw a bridge and all of its details
 draw the view from a window
+draw the view through a doorway
 make a copy of your favorite picture
 make a construction drawing of an animal
 make a construction drawing of a vehicle
@@ -169,6 +173,14 @@ find the line of action in an action pose
 draw a button-front shirt on a hangar
 draw fabric folds around a knee or elbow
 draw patterned fabric, tried in a knot
+draw your leg
+draw your hand
+draw a page of hands holding objects
+draw a page full of circles
+draw a page full of cubes
+draw a cube with a circle on each face, in two-point perspective
+draw a bird's eye view of an object
+draw a worm's eye view of an object
 
 # something or someone
 draw something for which you are thankful
@@ -225,6 +237,7 @@ draw something embroidered
 draw something folded
 draw something tangled
 draw something shattered
+draw something round
 
 # creativity
 draw yourself as an original superhero
@@ -261,3 +274,4 @@ draw your last dream
 draw a creepy forest
 draw a fairy glen
 draw a primordial swamp
+plan a mural for an awkward space

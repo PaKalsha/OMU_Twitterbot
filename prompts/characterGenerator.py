@@ -19,7 +19,7 @@ class CharacterGenerator(object):
             'dancer', 'demon hunter', 'detective', 'DJ', 'doctor', 'dragoon', 'druid',
             'elder', 'elementalist', 'emperor', 'empress', 'explorer', 'extrovert',
             # F - J
-            'fairy princess', 'farmer', 'fencer', 'fisherman', 'fool', 'fusilier',
+            'fairy princess', 'farmer', 'fencer', 'fisherman', 'fool', 'forest spirit', 'fusilier',
             'gambler', 'gardener', 'geek', 'geologist', 'geomancer', 'gossip', 'goth', 'gladiator', 'guard',
             'guerrilla fighter', 'guide', 'gunner',
             'hacker', 'healer', 'herald', 'hermit', 'hero', 'homemaker', 'hunter',
@@ -31,7 +31,7 @@ class CharacterGenerator(object):
             'machinist', 'mage', 'martial artist', 'mascot', 'mathematician', 'mayor', 'mechanic', 'medic', 'merchant',
             'mime', 'miner', 'monk', 'musician', 'mystic',
             'necromancer', 'nerd', 'ninja', 'nun', 'nurse',
-            'onion knight', 'oracle', 'orator', 'outlaw',
+            'one-man band', 'onion knight', 'oracle', 'orator', 'outlaw',
             # P - T
             'painter', 'pair of stowaways', 'paladin', 'performer', 'pilot', 'pirate', 'plumber-turned-hero', 'poet',
             'police officer', 'pop star', 'poacher', 'priest', 'prince', 'princess', 'programmer', 'psychic',
@@ -41,8 +41,8 @@ class CharacterGenerator(object):
             'saboteur', 'sage', 'samurai', 'sculptor', 'seer', 'sentinel', 'singer', 'scholar', 'scientist', 'shaman',
             '{} shepard'.format(get_animal('mythical')), 'sky pirate', 'soldier', 'soothsayer', 'sorcerer',
             'special agent', 'spy', 'stagecoach driver', 'star-crossed lovers', 'smuggler', 'summoner', 'survivalist',
-            'teacher', 'templar', 'thief', 'tinker', 'time mage', 'tracker', 'trader', 'trainer', 'trickster',
-            'tsundere', 'tyrant',
+            'teacher', 'techno-mage', 'templar', 'thief', 'tinker', 'time mage', 'tracker', 'trader', 'trainer',
+            'trickster', 'tsundere', 'tyrant',
             # U - Z
             'vampire', 'viking', 'villain', 'village elder',
             'waif', 'waiter', 'waitress', 'warrior', 'weaver', 'white mage', 'witch', 'wizard'

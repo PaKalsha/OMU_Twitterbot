@@ -7,7 +7,7 @@ places = [
     # F - J
     'fort', 'gallery', 'garden', 'gym', 'hospital', 'hotel', 'house', 'hot spring', 'jail',
     # K - O
-    'laundromat', 'library', 'lighthouse', 'market', 'mosque', 'museum', 'observatory', 'opera house',
+    'karaoke bar', 'laundromat', 'library', 'lighthouse', 'market', 'mosque', 'museum', 'observatory', 'opera house',
     # P - T
     'painting studio', 'palace', 'prison', 'restaurant', 'school', 'ship', 'shop', 'shrine', 'stadium', 'synagogue',
     'temple', 'tower', 'train station',
@@ -23,3 +23,7 @@ def get_place():
         A random location from the places list.
     """
     return libraries.get_one(places)
+
+
+if __name__ == '__main__':
+    print get_place()
