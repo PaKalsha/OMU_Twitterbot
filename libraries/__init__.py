@@ -10,4 +10,8 @@ def get_one(base_list):
         A random library entry.
     """
     index_limit = len(base_list) - 1
-    return base_list[randint(0, index_limit)]
+    item = base_list[randint(0, index_limit)]
+    if len(item) > 0:
+        return item
+    else:
+        get_one(base_list)
