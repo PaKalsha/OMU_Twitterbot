@@ -11,7 +11,11 @@ def get_one(base_list):
     """
     index_limit = len(base_list) - 1
     item = base_list[randint(0, index_limit)]
-    if len(item) > 0:
-        return item
-    else:
-        get_one(base_list)
+    if len(item.strip()) == 0:
+        item = get_one(base_list)
+    return item
+
+
+if __name__ == '__main__':
+    base_list = ['', '', '', 'hi']
+    print get_one(base_list)
