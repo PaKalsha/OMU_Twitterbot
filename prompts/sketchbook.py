@@ -17,7 +17,7 @@ def get_prompt():
     fn = os.path.join(os.path.dirname(__file__), 'weekday.txt')
     with open(fn, 'r') as f:
         for line in f:
-            if line.startswith('#') or line.startswith('\n'):
+            if line.startswith('#') or len(line.strip()) == 0:
                 pass
             else:
                 sketchbook_prompts.append(line.strip())
