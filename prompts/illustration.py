@@ -25,7 +25,7 @@ illustration = [
     'your character receives a basket of baby {}s'.format(get_animal('mythical')),
     'the voyage home',
     'there and back again',
-    'space ()s'.format(get_animal('insect')),
+    'space {}s'.format(get_animal('insect')),
     'king under the mountain',
     'king of the world',
     'queen of the air',
