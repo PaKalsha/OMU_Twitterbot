@@ -54,7 +54,7 @@ draw an animal playing a game
 draw the most terrifying animal you can imagine
 draw the most adorable animal you can imagine
 draw an exotic animal
-draw your ideal
+draw your ideal pet
 draw your favorite starter pokemon
 
 # food
