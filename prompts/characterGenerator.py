@@ -90,14 +90,14 @@ class CharacterGenerator(object):
         """
         return libraries.get_one(self.description)
 
-    def get_prompt(self, character=None):
+    def generate_character(self, character=None):
         """
         Combines a random character and an emotion or adjective.
         :param character: string
             Specify a character type
         :return: string
             Returns a character design prompt.
-        """#
+        """
         if character is None:
             character = self.get_character()
 
@@ -115,8 +115,16 @@ class CharacterGenerator(object):
 
         return prompt
 
+    def get_prompt(self):
+        """
+        Returns a character prompt.
+        :return: string
+            Returns a character design prompt.
+        """
+        return self.generate_character()
+
 
 if __name__ == '__main__':
     c = CharacterGenerator()
     print c.get_prompt()
-    print c.get_prompt(get_animal('mammal'))
+    print c.generate_character(get_animal('mammal'))
