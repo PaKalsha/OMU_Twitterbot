@@ -6,6 +6,7 @@ from prompts.characterGenerator import CharacterGenerator
 import libraries
 
 from libraries.concepts.genre import get_genre
+from libraries.concepts.sizes import get_size
 
 from libraries.nouns.animals import get_animal
 from libraries.nouns.music import get_instrument
@@ -40,7 +41,7 @@ class Mermay(CharacterGenerator):
             'a {} eating her favourite food'.format(self.get_character()),
             'a {} and her baby'.format(self.get_character()),
             'a family of {} merfolk'.format(get_animal('fish')),
-            'a {} surrounded by {}'.format(self.get_character(), get_animal('fish')),
+            'a {} surrounded by a shoal of {}'.format(self.get_character(), get_animal('fish')),
             'a {} rescuing a trapped {}'.format(self.get_character(), get_animal('fish')),
             'a {} fighting a monstrous {}'.format(self.get_character(), get_animal('fish')),
             'a {} tangled in a net'.format(self.get_character()),
@@ -48,11 +49,12 @@ class Mermay(CharacterGenerator):
             'a {} playing hide and seek in a {}'.format(self.get_character(), self.get_env()),
             'a {} examining human technology'.format(self.get_character()),
             'a mermaid from a {} story'.format(get_genre()),
-            'a mermaid who lives in a pool',
+            'a mermaid who lives in a swimming pool',
             'a tiny mermaid who lives in a fish tank',
             'a mermaid who lives in an aquarium',
             'a beached mermaid',
             'a mermaid rescued by a sailor',
+            'a baby {} mermaid'.format(get_animal('fish')),
             'a {}\'s first trip to the shore'.format(self.get_character()),
 
             'a sea witch',
@@ -62,10 +64,24 @@ class Mermay(CharacterGenerator):
             'a mermaid living in a desert oasis',
             'a mermaid from a river',
             'a mermaid from a swamp',
+            'a mermaid from outer space',
+            'a mermaid from the future',
             'a friendly mermaid',
             'a malevolent mermaid',
             'a cruel mermaid',
+            'a royal {}'.format(self.get_character()),
+            'a {} pin-up'.format(self.get_character()),
+            'a {} {}'.format(get_size('large'), self.get_character()),
+            'a {} {}'.format(get_size('small'), self.get_character()),
+            'a {} gardener'.format(self.get_character()),
+            'a {} pirate'.format(self.get_character()),
+            'a {} warrior'.format(self.get_character()),
+            'a {} superhero'.format(self.get_character()),
             'a {} merchant'.format(self.get_character()),
+            'a {} pop star'.format(self.get_character()),
+            'a {} artist'.format(self.get_character()),
+            'a {} poet'.format(self.get_character()),
+            'your mersona',
         ]
 
     @staticmethod
@@ -78,7 +94,7 @@ class Mermay(CharacterGenerator):
         merfolk = "mermaid"
         if randint(0,3) == 0:
             merfolk = "merman"
-        return '{} {}'.format(get_animal('fish'), merfolk)
+        return '{}-{}'.format(get_animal('fish'), merfolk)
 
     def get_env(self):
         """
@@ -102,7 +118,7 @@ class Mermay(CharacterGenerator):
         :return: string
             Returns a mermaid-themed prompt.
         """
-        if randint(0,3) == 0:
+        if randint(1, 5) <= 3:
             return self.get_scene()
         else:
             return self.generate_character()
